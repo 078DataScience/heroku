@@ -1,0 +1,38 @@
+import dash
+import dash_core_components as dcc
+import dash_html_components as html
+import pandas as pd
+from dash.dependencies import Input, Output
+import plotly.express as px
+app = dash.Dash(__name__)
+app.title = "IPL Dashboard"
+#Creating a section to place our dropdown 
+dropdown_box = html.Div(
+children = ["dropdown", dcc.Dropdown()], #dash dropdown element
+style = {'width': '90%', "position": "fixed", "left": "5%",
+         'display': 'inline-block', 'height':"5%", "top": "1%", 
+         'z-index':'1', 'border': '2px solid green', 
+         'text-align': 'center'}
+)
+#Creating a section to place our graphs 
+Graphs = html.Div(children = [
+html.Div(children = ["Graph 1", dcc.Graph()], #dash graph element
+style = {'width': '45%', "position": "fixed", "left": "2%",
+         'display': 'inline-block', 'text-align': 'center',
+         'top': '10%', 'border': '2px solid red', 'height':'50%'}
+),
+html.Div(children = ["Graph 2", dcc.Graph()], #dash graph element
+style = {'width': '45%', 'position': 'fixed', 'left': '53%',
+         'display': 'inline-block', 'text-align': 'center',
+         'top': '10%', 'border': '3px solid red', 'height':'50%'}
+)
+])
+#creating and adding the main html div which encapsulates all elements on the viewport
+app.layout = html.Div(id ="main_div", children= [dropdown_box, Graphs],
+style = {'background-color': '#FFFFFF', 'padding':'0',           
+         'width':'100%', 'height':'100%', 'position': 'fixed',
+         'top': '0%', 'left': '0%', 'bottom': '0%', 'height':'100%',
+         'border': '2px solid blue'}
+)
+if __name__ == "__main__":
+    app.run_server(debug=False, port = 8080)
