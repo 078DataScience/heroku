@@ -29,7 +29,7 @@ Bottleneck
 Brotli==1.0.9
 brotlipy==0.7.0
 cached-property 
-certifi==2021.10.8
+certifi==2022.12.7
 cffi 
 chardet 
 charset-normalizer 
